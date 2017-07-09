@@ -1,11 +1,12 @@
+<!DOCTYPE HTML>
 <html>
-
 <head>
     <script src="js/jquery.min.js"></script>
     <script src="js/skel.min.js"></script>
     <script src="js/util.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>
     <link rel="stylesheet" href="css/main.css">
-    <title>Untitled</title>
+    <title>John Peng</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -37,42 +38,46 @@
             <article id="about" style="display: none;">
                 <h2 class="major">About</h2>
                 <p>I am a student attending the University of Minnesota seeking a Bachelors in Computer Science and a minor in Management. At UMN I am an active member of the Association for Computing Machinery(ACM) as well as the Video Game Development Club. I have had a strong passion for CS my entire life.
-                <br><br> 
+                <br><br>
                 My skill set includes Java, Python, C++, SQL, Bootstrap, Django, and many more. I love software development and front-end design. I aim to become a versatile full-stack developer or a </p>
                 <div class="close">Close</div>
             </article>
             <article id="portfolio" style="display: none;">
-                <h2 class="major">Portfolio</h2><span class="image main"><img src="img/1.jpg" alt="" style=""></span>
-                
+                <h2 class="major">Portfolio</h2><span class="image main"><img src="img/1.png" alt="" style=""></span>
+
                 <div class="close">Close</div>
             </article>
             <article id="contact" style="display: none;">
                 <h2 class="major">Contact</h2>
-                <form method="post" action="#">
+                <form method="post" action="#contact">
                     <div class="field half first">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" required>
                     </div>
                     <div class="field half">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email">
+                        <input type="email" name="email" id="email" required>
                     </div>
                     <div class="field">
                         <label for="message">Message</label>
-                        <textarea name="message" id="message" rows="4"></textarea>
+                        <textarea type="message" name="message" id="message" rows="4" required></textarea>
                     </div>
                     <ul class="actions">
                         <li>
-                            <input type="submit" value="Send Message" class="special">
+                            <input type="submit" value="Submit Message" id="submit" class="special">
                         </li>
                         <li>
                             <input type="reset" value="Reset">
+                        </li>
+                        <li>
+                          <a href="#" class="button icon fa-download" id="fileRequest">Resume
+                        </a>
                         </li>
                     </ul>
                 </form>
                 <ul class="icons">
                     <li><a href="https://www.linkedin.com/in/j-peng" class="icon fa-linkedin"><span class="label">Linkedin</span></a>
-                        <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a>
+                        <li><a href="https://github.com/JPeng0" class="icon fa-github"><span class="label">GitHub</span></a>
                         </li>
                 </ul>
                 <div class="close">Close</div>
