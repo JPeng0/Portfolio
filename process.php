@@ -13,8 +13,6 @@ if (empty($_POST['name']))
 if (empty($_POST['email']))
         $errors['email'] = 'Email is required.';
         
-if (empty($_POST['message']))
-            $errors['message'] = 'Message is required.';
             
             // return a response ===========================================================
             

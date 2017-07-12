@@ -185,6 +185,7 @@ html {
 }
 body,
 input,
+button,
 select,
 textarea {
     color: #ffffff;
@@ -868,6 +869,50 @@ table.alt thead {
 table.alt tfoot {
     border-top: 0;
 }
+.btn-success {
+color: #fff;
+background-color: #5cb85c;
+border-color: #4cae4c
+}
+.btn-success.focus,
+.btn-success:focus {
+color: #fff;
+background-color: #449d44;
+border-color: #255625
+}
+.btn-success:hover {
+color: #fff;
+background-color: #449d44;
+border-color: #398439
+}
+.btn-success.active,
+.btn-success:active,
+ {
+color: #fff;
+background-color: #449d44;
+border-color: #398439
+}
+.btn-success.active.focus,
+.btn-success.active:focus,
+.btn-success.active:hover,
+.btn-success:active.focus,
+.btn-success:active:focus,
+.btn-success:active:hover,
+ {
+color: #fff;
+background-color: #398439;
+border-color: #255625
+}
+.btn-success.disabled.focus,
+.btn-success.disabled:focus,
+.btn-success.disabled:hover,
+.btn-success[disabled].focus,
+.btn-success[disabled]:focus,
+.btn-success[disabled]:hover,
+{
+background-color: #5cb85c;
+border-color: #4cae4c
+}
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -954,17 +999,13 @@ button:disabled,
     -ms-pointer-events: none;
     pointer-events: none;
     cursor: default;
-    opacity: 0.25;
+    opacity: 0.85;
 }
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button {
     line-height: calc(2.75rem - 2px);
-}
-input[type="submit"].sent {
-  background-color: green;
-
 }
 #bg {
     -moz-transform: scale(1.0);

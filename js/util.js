@@ -129,6 +129,7 @@
                 if (config.resetForms)
                     $this.find('form').each(function () {
                         this.reset();
+                        this.removeAttr('disabled');
                     });
 
             }, config.delay);
@@ -458,7 +459,7 @@
             $this.find('select')
                 .val($('option:first').val());
 
-            $this.find('input,textarea')
+            $this.find('form')
                 .each(function () {
 
                     var i = $(this),
@@ -614,14 +615,29 @@
                     console.log(data);
 
                     // here we will handle errors and validation messages
-                        $("#submit").toggleClass('special sent');
-                        $('#submit').val("Sent");
+                        $('#submit').attr('class', 'icon fa-check btn-success');
+                        $('#submit').attr('disabled', 'disabled');
+                        $('#submit').text("Sent");
 
 
                 });
             event.preventDefault();
         });
 
+        $('form').on('reset', function(){
+          $('#submit').removeAttr('disabled');
+          $('#submit').attr('class', 'special');
+          $('#submit').text("Submit Message");
+        });
+
+        $('form').keypress(function (e) {
+        	 var key = e.which;
+        	 if(key == 13)  // the enter key code
+        	  {
+        	    $('#submit').click();
+        	    return false;
+        	  }
+        	});
         //download file.
         $('#fileRequest').on('click', function(e) {
             e.preventDefault();
