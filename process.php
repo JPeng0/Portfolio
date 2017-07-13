@@ -8,16 +8,16 @@ $data           = array();      // array to pass back data
 // if any of these variables don't exist, add an error to our $errors array
 
 if (empty($_POST['name']))
-    $errors['name'] = 'Name is required.';
+{$errors['name'] = 'Name is required.';}
     
 if (empty($_POST['email']))
-        $errors['email'] = 'Email is required.';
+{$errors['email'] = 'Email is required.';}
         
             
             // return a response ===========================================================
             
             // if there are any errors in our errors array, return a success boolean of false
-            if ( ! empty($errors)) {
+ if ( ! empty($errors)) {
                 
                 // if there are items in our errors array, return those errors
                 $data['success'] = false;
@@ -26,9 +26,12 @@ if (empty($_POST['email']))
                 
                 // if there are no errors process our form, then return a message
                 
-                // DO ALL YOUR FORM PROCESSING HERE
-                // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
-                
+                $name = $_POST['name'];
+  				$email = $_POST['email'];
+  				$message = $_POST['message'];
+  				$subject = "Sent by " . $name. " from web form";
+  				$header = "From:" . $email;	
+                mail("pengx205@umn.edu", $subject, $message, $header);
                 // show a message of success and provide a true success variable
                 $data['success'] = true;
                 $data['message'] = 'Success!';
