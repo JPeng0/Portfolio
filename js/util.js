@@ -593,9 +593,9 @@
             $('.help-block').remove(); // remove the error text
 
             var formData = {
-                'name': $('input[name=name]').val(),
-                'email': $('input[name=email]').val(),
-                'message': $('input[name=message]').val()
+                'name': $('#name').val(),
+                'email': $('#email').val(),
+                'message': $('#message').val()
 
             };
 

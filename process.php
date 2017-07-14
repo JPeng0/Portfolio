@@ -1,18 +1,17 @@
 <?php
 // process.php
-$data = false;
+$data = array();
 // validate the variables ======================================================
 // if any of these variables don't exist, add an error to our $errors array
-
-if (empty($_POST['Message']))
+if (empty($_POST['message']))
 	$errors['message'] = 'Message is required.';
-
         
             // return a response ===========================================================
             
             // if there are any errors in our errors array, return a success boolean of false
 if ( ! empty($errors)) {
-	$data = false;
+	$data['Success'] = false;
+	$data['errors']  = $errors;
 }
                 // if there are no errors process our form, then return a message
                 else {
@@ -21,9 +20,11 @@ if ( ! empty($errors)) {
   				$message = $_POST['message'];
   				$subject = 'Sent by ' . $name. ' from web form';
   				$header = 'From:' . $email;	
+  				
                 mail('pengx205@umn.edu', $subject, $message, $header);
                 // show a message of success and provide a true success variable
-                $data = true;
+                $data['Success'] = true;
+                $data['data'] = $name . " " . $email;
                 }
             
             
