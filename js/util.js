@@ -1,16 +1,16 @@
-(function ($) {
+(function($) {
 
     /**
      * Generate an indented list of links from a nav. Meant for use with panel().
      * @return {jQuery} jQuery object.
      */
-    $.fn.navList = function () {
+    $.fn.navList = function() {
 
         var $this = $(this);
         $a = $this.find('a'),
             b = [];
 
-        $a.each(function () {
+        $a.each(function() {
 
             var $this = $(this),
                 indent = Math.max(0, $this.parents('li').length - 1),
@@ -39,7 +39,7 @@
      * @param {object} userConfig User config.
      * @return {jQuery} jQuery object.
      */
-    $.fn.panel = function (userConfig) {
+    $.fn.panel = function(userConfig) {
 
         // No elements?
         if (this.length == 0)
@@ -101,7 +101,7 @@
         // Panel.
 
         // Methods.
-        $this._hide = function (event) {
+        $this._hide = function(event) {
 
             // Already hidden? Bail.
             if (!config.target.hasClass(config.visibleClass))
@@ -119,7 +119,7 @@
             config.target.removeClass(config.visibleClass);
 
             // Post-hide stuff.
-            window.setTimeout(function () {
+            window.setTimeout(function() {
 
                 // Reset scroll position.
                 if (config.resetScroll)
@@ -127,7 +127,7 @@
 
                 // Reset forms.
                 if (config.resetForms)
-                    $this.find('form').each(function () {
+                    $this.find('form').each(function() {
                         this.reset();
                         this.removeAttr('disabled');
                     });
@@ -148,7 +148,7 @@
                 .css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
 
             $this
-                .on('click', 'a', function (event) {
+                .on('click', 'a', function(event) {
 
                     var $a = $(this),
                         href = $a.attr('href'),
@@ -165,7 +165,7 @@
                     $this._hide();
 
                     // Redirect to href.
-                    window.setTimeout(function () {
+                    window.setTimeout(function() {
 
                         if (target == '_blank')
                             window.open(href);
@@ -179,14 +179,14 @@
         }
 
         // Event: Touch stuff.
-        $this.on('touchstart', function (event) {
+        $this.on('touchstart', function(event) {
 
             $this.touchPosX = event.originalEvent.touches[0].pageX;
             $this.touchPosY = event.originalEvent.touches[0].pageY;
 
         });
 
-        $this.on('touchmove', function (event) {
+        $this.on('touchmove', function(event) {
 
             if ($this.touchPosX === null || $this.touchPosY === null)
                 return;
@@ -249,12 +249,12 @@
         });
 
         // Event: Prevent certain events inside the panel from bubbling.
-        $this.on('click touchend touchstart touchmove', function (event) {
+        $this.on('click touchend touchstart touchmove', function(event) {
             event.stopPropagation();
         });
 
         // Event: Hide panel if a child anchor tag pointing to its ID is clicked.
-        $this.on('click', 'a[href="#' + id + '"]', function (event) {
+        $this.on('click', 'a[href="#' + id + '"]', function(event) {
 
             event.preventDefault();
             event.stopPropagation();
@@ -266,12 +266,12 @@
         // Body.
 
         // Event: Hide panel on body click/tap.
-        $body.on('click touchend', function (event) {
+        $body.on('click touchend', function(event) {
             $this._hide(event);
         });
 
         // Event: Toggle.
-        $body.on('click', 'a[href="#' + id + '"]', function (event) {
+        $body.on('click', 'a[href="#' + id + '"]', function(event) {
 
             event.preventDefault();
             event.stopPropagation();
@@ -284,7 +284,7 @@
 
         // Event: Hide on ESC.
         if (config.hideOnEscape)
-            $window.on('keydown', function (event) {
+            $window.on('keydown', function(event) {
 
                 if (event.keyCode == 27)
                     $this._hide(event);
@@ -299,10 +299,10 @@
      * Apply "placeholder" attribute polyfill to one or more forms.
      * @return {jQuery} jQuery object.
      */
-    $.fn.placeholder = function () {
+    $.fn.placeholder = function() {
 
         // Browser natively supports placeholders? Bail.
-        if (typeof (document.createElement('input')).placeholder != 'undefined')
+        if (typeof(document.createElement('input')).placeholder != 'undefined')
             return $(this);
 
         // No elements?
@@ -324,7 +324,7 @@
 
         // Text, TextArea.
         $this.find('input[type=text],textarea')
-            .each(function () {
+            .each(function() {
 
                 var i = $(this);
 
@@ -334,7 +334,7 @@
                     .val(i.attr('placeholder'));
 
             })
-            .on('blur', function () {
+            .on('blur', function() {
 
                 var i = $(this);
 
@@ -347,7 +347,7 @@
                     .val(i.attr('placeholder'));
 
             })
-            .on('focus', function () {
+            .on('focus', function() {
 
                 var i = $(this);
 
@@ -363,7 +363,7 @@
 
         // Password.
         $this.find('input[type=password]')
-            .each(function () {
+            .each(function() {
 
                 var i = $(this);
                 var x = $(
@@ -390,7 +390,7 @@
                     x.hide();
 
                 i
-                    .on('blur', function (event) {
+                    .on('blur', function(event) {
 
                         event.preventDefault();
 
@@ -406,7 +406,7 @@
                     });
 
                 x
-                    .on('focus', function (event) {
+                    .on('focus', function(event) {
 
                         event.preventDefault();
 
@@ -419,7 +419,7 @@
                             .focus();
 
                     })
-                    .on('keypress', function (event) {
+                    .on('keypress', function(event) {
 
                         event.preventDefault();
                         x.val('');
@@ -430,10 +430,10 @@
 
         // Events.
         $this
-            .on('submit', function () {
+            .on('submit', function() {
 
                 $this.find('input[type=text],input[type=password],textarea')
-                    .each(function (event) {
+                    .each(function(event) {
 
                         var i = $(this);
 
@@ -452,66 +452,66 @@
 
 
 
-        .on('reset', function (event) {
+            .on('reset', function(event) {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            $this.find('select')
-                .val($('option:first').val());
+                $this.find('select')
+                    .val($('option:first').val());
 
-            $this.find('form')
-                .each(function () {
+                $this.find('form')
+                    .each(function() {
 
-                    var i = $(this),
-                        x;
+                        var i = $(this),
+                            x;
 
-                    i.removeClass('polyfill-placeholder');
+                        i.removeClass('polyfill-placeholder');
 
-                    switch (this.type) {
+                        switch (this.type) {
 
-                        case 'submit':
-                        case 'reset':
-                            break;
+                            case 'submit':
+                            case 'reset':
+                                break;
 
-                        case 'password':
-                            i.val(i.attr('defaultValue'));
+                            case 'password':
+                                i.val(i.attr('defaultValue'));
 
-                            x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
+                                x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
 
-                            if (i.val() == '') {
-                                i.hide();
-                                x.show();
-                            } else {
-                                i.show();
-                                x.hide();
-                            }
+                                if (i.val() == '') {
+                                    i.hide();
+                                    x.show();
+                                } else {
+                                    i.show();
+                                    x.hide();
+                                }
 
-                            break;
+                                break;
 
-                        case 'checkbox':
-                        case 'radio':
-                            i.attr('checked', i.attr('defaultValue'));
-                            break;
+                            case 'checkbox':
+                            case 'radio':
+                                i.attr('checked', i.attr('defaultValue'));
+                                break;
 
-                        case 'text':
-                        case 'textarea':
-                            i.val(i.attr('defaultValue'));
+                            case 'text':
+                            case 'textarea':
+                                i.val(i.attr('defaultValue'));
 
-                            if (i.val() == '') {
-                                i.addClass('polyfill-placeholder');
-                                i.val(i.attr('placeholder'));
-                            }
+                                if (i.val() == '') {
+                                    i.addClass('polyfill-placeholder');
+                                    i.val(i.attr('placeholder'));
+                                }
 
-                            break;
+                                break;
 
-                        default:
-                            i.val(i.attr('defaultValue'));
-                            break;
+                            default:
+                                i.val(i.attr('defaultValue'));
+                                break;
 
-                    }
-                });
+                        }
+                    });
 
-        });
+            });
 
         return $this;
 
@@ -522,7 +522,7 @@
      * @param {jQuery} $elements Elements (or selector) to move.
      * @param {bool} condition If true, moves elements to the top. Otherwise, moves elements back to their original locations.
      */
-    $.prioritize = function ($elements, condition) {
+    $.prioritize = function($elements, condition) {
 
         var key = '__prioritize';
 
@@ -531,7 +531,7 @@
             $elements = $($elements);
 
         // Step through elements.
-        $elements.each(function () {
+        $elements.each(function() {
 
             var $e = $(this),
                 $p,
@@ -563,7 +563,7 @@
 
             }
 
-                // Moved already?
+            // Moved already?
             else {
 
                 // Condition is true? Bail.
@@ -587,7 +587,7 @@
     $(document).ready(function() {
 
         // Process form.
-        $('form').submit(function (event) {
+        $('form').submit(function(event) {
             // remove previous error messages
             $('.form').removeClass('has-error'); // remove the error class
             $('.help-block').remove(); // remove the error text
@@ -600,14 +600,15 @@
             };
 
             $.ajax({
-                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url         : 'process.php', // the url where we want to POST
-                data        : formData, // our data object
-                dataType    : 'json', // what type of data do we expect back from the server
-                error 	    : function(jqXHR, textStatus, errorThrown){
-                    alert(textStatus, errorThrown);}
+                    type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url: 'process.php', // the url where we want to POST
+                    data: formData, // our data object
+                    dataType: 'json', // what type of data do we expect back from the server
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert(textStatus, errorThrown);
+                
 
-            })
+                })
                 // using the done promise callback
                 .done(function(data) {
 
@@ -615,29 +616,29 @@
                     console.log(data);
 
                     // here we will handle errors and validation messages
-                        $('#submit').attr('class', 'icon fa-check btn-success');
-                        $('#submit').attr('disabled', 'disabled');
-                        $('#submit').text("Sent");
+                    $('#submit').attr('class', 'icon fa-check btn-success');
+                    $('#submit').attr('disabled', 'disabled');
+                    $('#submit').text("Sent");
 
 
                 });
             event.preventDefault();
         });
 
-        $('form').on('reset', function(){
-          $('#submit').removeAttr('disabled');
-          $('#submit').attr('class', 'special');
-          $('#submit').text("Submit Message");
+        $('form').on('reset', function() {
+            $('#submit').removeAttr('disabled');
+            $('#submit').attr('class', 'special');
+            $('#submit').text("Submit Message");
         });
 
-        $('form').keypress(function (e) {
-        	 var key = e.which;
-        	 if(key == 13)  // the enter key code
-        	  {
-        	    $('#submit').click();
-        	    return false;
-        	  }
-        	});
+        $('form').keypress(function(e) {
+            var key = e.which;
+            if (key == 13) // the enter key code
+            {
+                $('#submit').click();
+                return false;
+            }
+        });
         //download file.
         $('#fileRequest').on('click', function(e) {
             e.preventDefault();
