@@ -21,7 +21,7 @@ else {
     $subject = 'Sent by ' . $name . ' from web form';
     $header  = 'From:' . $email;
     
-    mail('contact@jpeng.io', $subject, $message, $header);
+    mail('john1peng@gmail.com', $subject, $message, $header);
     // show a message of success and provide a true success variable
     $data['Success'] = true;
     $data['data']    = $name . " " . $email;

@@ -1040,7 +1040,7 @@ button {
     -webkit-transition-delay: 0.75s;
     -ms-transition-delay: 0.75s;
     transition-delay: 0.75s;
-    //background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../img/tmp.jpg");
+    background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../img/tmp.jpg");
     background-position: center, center;
     background-repeat: no-repeat, repeat;
     z-index: 2;
@@ -1054,8 +1054,9 @@ button {
     -webkit-transition: -webkit-transform 0.325s ease-in-out, -webkit-filter 0.325s ease-in-out;
     -ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
     transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
-    //background-image: url("../img/temp.jpg");
-    background-color: #F75D59;
+    filter: brightness(50%);
+    background-image: url("../images/2.jpg");
+    //background-color: #F75D59;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1070,6 +1071,7 @@ body.is-article-visible #bg:after {
     -webkit-filter: blur(0.2rem);
     -ms-filter: blur(0.2rem);
     filter: blur(0.2rem);
+    filter: brightness(50%);
 }
 body.is-loading #bg:before {
     background-color: #000000;
@@ -1379,7 +1381,7 @@ body.is-loading #header .content .inner {
     position: relative;
     width: 40rem;
     max-width: 100%;
-    background-color: rgba(255, 133, 129, 0.85);
+    //background-color: rgba(255, 133, 129, 0.85);
     border-radius: 4px;
     opacity: 0;
 

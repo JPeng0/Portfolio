@@ -606,8 +606,7 @@
                     dataType: 'json', // what type of data do we expect back from the server
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert(textStatus, errorThrown);
-                
-
+                    }
                 })
                 // using the done promise callback
                 .done(function(data) {
